@@ -18,7 +18,8 @@ abstract class Entidade extends Utilizador{
 
     public function validaEmail($email)
     {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if (filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
             return $email;
         } else {
             return null;
