@@ -1,30 +1,24 @@
 <?php
 
-abstract class Entidade extends Utilizador{
-    protected int $id;
-    protected int $nif;
-    protected string $email;
-    protected Morada $morada;
-    protected string $tlm;
-    protected string $estado;
+require_once "Utilizador.php";
+require_once "Morada.php";
 
-    public function __construct(string $email, int $nif, Morada $morada, string $tlm)
+abstract class Entidade extends Model{
+    protected ?int $nif;
+    protected ?int $morada_id;
+    protected ?string $tlm;
+
+    public function __construct(?int $nif = null, ?int $morada_id = null, ?string $tlm = '', string $tablename, string $id)
     {
+        parent::__construct($tablename, $id);
+
         $this->nif = self::validaNif($nif);
-        $this->email = self::validaEmail($email);
-        $this->morada = $morada;
+        
+        $this->morada_id = $morada_id;
         $this->tlm = self::validaTlm($tlm);
     }
 
-    public function validaEmail($email)
-    {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL))
-        {
-            return $email;
-        } else {
-            return null;
-        }
-    }
+    
 
     public function validaNif($nif, $ignoreFirst = true)
     {
@@ -57,6 +51,15 @@ abstract class Entidade extends Utilizador{
             } else {
                 return null;
             }
+        }
+    }
+
+    public function validaTlm($tlm)
+    {
+        if(strlen($tlm)==9){
+            return $tlm;
+        } else {
+            return null;
         }
     }
 }

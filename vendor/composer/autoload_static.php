@@ -20,6 +20,10 @@ class ComposerStaticInit14ba44a1530d6271fe27a2f495a33abf
             'Symfony\\Contracts\\Translation\\' => 30,
             'Symfony\\Component\\Translation\\' => 30,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'C' => 
         array (
             'Carbon\\' => 7,
@@ -43,6 +47,10 @@ class ComposerStaticInit14ba44a1530d6271fe27a2f495a33abf
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -53,16 +61,20 @@ class ComposerStaticInit14ba44a1530d6271fe27a2f495a33abf
         'Admnistrador' => __DIR__ . '/../..' . '/classes/Admnistrador.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Ementas' => __DIR__ . '/../..' . '/classes/Ementas.php',
-        'Entidade' => __DIR__ . '/../..' . '/classes/Entidade.php',
-        'Morada' => __DIR__ . '/../..' . '/classes/Morada.php',
-        'Perfil' => __DIR__ . '/../..' . '/classes/Perfil.php',
+        'Estado' => __DIR__ . '/../..' . '/classes/Estado.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Restaurante' => __DIR__ . '/../..' . '/classes/Restaurante.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-        'Utilizador' => __DIR__ . '/../..' . '/classes/Utilizador.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'restaurantea\\classes\\Cliente' => __DIR__ . '/../..' . '/classes/Clientes.php',
+        'restaurantea\\classes\\Ementas' => __DIR__ . '/../..' . '/classes/Ementas.php',
+        'restaurantea\\classes\\Entidade' => __DIR__ . '/../..' . '/classes/Entidade.php',
+        'restaurantea\\classes\\Model' => __DIR__ . '/../..' . '/classes/Model.php',
+        'restaurantea\\classes\\Morada' => __DIR__ . '/../..' . '/classes/Morada.php',
+        'restaurantea\\classes\\MyConnect' => __DIR__ . '/../..' . '/classes/MyConnect.php',
+        'restaurantea\\classes\\Perfil' => __DIR__ . '/../..' . '/classes/Perfil.php',
+        'restaurantea\\classes\\Utilizador' => __DIR__ . '/../..' . '/classes/Utilizador.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
