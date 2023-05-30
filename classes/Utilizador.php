@@ -116,4 +116,12 @@ class Utilizador extends Model
 
         return $this;
     }
+
+    /**
+     * Get the value of perfil_id
+     */
+    public function getPerfilId(): ?int
+    {
+        return $this->perfil_id;
+    }
 }

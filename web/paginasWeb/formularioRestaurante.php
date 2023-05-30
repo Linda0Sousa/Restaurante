@@ -2,6 +2,29 @@
 
 include_once "../includes/header.php"; 
 
+session_start();
+
+if(!isset($_SESSION) || $_SESSION['perfil'] != 1 ){
+  ?> <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="refresh" content="2;url=Pratos.php">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Negado</title>
+   </head>
+   <body style= "text-align: center; color: #120a8f; font-size: 2rem; font-weight: bold; background-color: #F0FFFF">
+       <div style="margin-top: 10%">
+       <p>Não</p>
+       <img src="../icons/naos.png" alt="check" style= "width: 25%">
+       <p>Já tinha pensado nisso.</p>
+       </div>
+   </body>
+   </html> 
+   <?php
+exit;}
+
 ?>
 
 <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css">
@@ -20,8 +43,16 @@ include_once "../includes/header.php";
             </div>
 
             <div class="col-sm-6">
-              <label for="address2" class="form-label" >Numero de telemovel Do restaurante</label>
+              <label for="address2" class="form-label">Numero de telemovel Do restaurante</label>
               <input type="" class="form-control" id="control" placeholder="" name="tlm">
+              <div class="invalid-feedback">
+              Este campo é obrigatorio
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="address2" class="form-label" >Numero de telefone Do restaurante</label>
+              <input type="" class="form-control" id="control" placeholder="" name="tlf">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>
@@ -115,6 +146,22 @@ include_once "../includes/header.php";
             </div>
 
             <div class="col-12">
+              <label for="email" class="form-label">webpage</label>
+              <input type="text" class="form-control" id="address" placeholder="" required="" name="webpage">
+              <div class="invalid-feedback">
+              Este campo é obrigatorio
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Nome do Responsavel</label>
+              <input type="text" class="form-control" id="address" placeholder="" required="" name="responsavel">
+              <div class="invalid-feedback">
+              Este campo é obrigatorio
+              </div>
+            </div>
+
+            <div class="col-12">
               <label for="email" class="form-label">Hora de Abertura</label>
               <input type="text" class="form-control" id="address" placeholder="Coloque no formato de relogio digital" required="" name="Habertura">
               <div class="invalid-feedback">
@@ -131,14 +178,14 @@ include_once "../includes/header.php";
             </div>
 
             <h6>Dias Take Away (pode alterar mais tarde)</h6>
-            <div class="input">
-              <input type="checkbox" name="elementos[]" value="monday"> Segunda<br>
-              <input type="checkbox" name="elementos[]" value="tuesday"> Terça<br>
-              <input type="checkbox" name="elementos[]" value="wednesday"> Quarta<br>
-              <input type="checkbox" name="elementos[]" value="thursday"> Quinta<br>
-              <input type="checkbox" name="elementos[]" value="friday"> Sexta<br>
-              <input type="checkbox" name="elementos[]" value="saturday"> Sabado<br>
-              <input type="checkbox" name="elementos[]" value="sunday"> Domingo<br>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="segunda" value="monday"> Segunda<br>
+              <input class="form-check-input" type="checkbox" name="terca" value="tuesday"> Terça<br>
+              <input class="form-check-input" type="checkbox" name="quarta" value="wednesday"> Quarta<br>
+              <input class="form-check-input" type="checkbox" name="quinta" value="thursday"> Quinta<br>
+              <input class="form-check-input" type="checkbox" name="sexta" value="friday"> Sexta<br>
+              <input class="form-check-input" type="checkbox" name="sabado" value="saturday"> Sabado<br>
+              <input class="form-check-input" type="checkbox" name="domingo" value="sunday"> Domingo<br>
             </div>
 
           </div>
@@ -147,21 +194,13 @@ include_once "../includes/header.php";
 
           <h4 class="mb-3">Selecione o tipo de Pagamento</h4>
 
-          <div class="my-3">
-            <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-              <label class="form-check-label" for="credit" name="credito">Cartão de Credito</label>
-            </div>
-            <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-              <label class="form-check-label" for="debit" name="debito">Cartão de Débito</label>
-            </div>
-            <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
-              <label class="form-check-label" for="paypal" name="paypal">PayPal</label>
-            </div>
+          <div style="margin-bottom: 3rem">
+              <input class="form-check-input" type="checkbox" name="Mbway" value="MBway"> MBWay<br>
+              <input class="form-check-input" type="checkbox" name="visa" value="visa"> Visa<br>
+              <input class="form-check-input" type="checkbox" name="mutlibanco" value="multibanco">Multibanco<br>
+              <input class="form-check-input" type="checkbox" name="numerario" value="numerario">Numerario<br>
+              <input class="form-check-input" type="checkbox" name="cheque" value="cheque">Cheque<br>
           </div>
-          <hr class="my-4">
 
           <button class="w-20 btn btn-primary btn-lg" type="submit" style="margin-left: 43%">Continuar</button>
         </form>

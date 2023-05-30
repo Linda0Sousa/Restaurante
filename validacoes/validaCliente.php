@@ -49,8 +49,28 @@ $palavraPasse = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $morada = new Morada($_POST['pais'], $_POST['localidade'], $_POST['codigoPostal'], $_POST['porta'], $_POST['rua']);
 $morada->save();
 
-$utilizador = new Utilizador($_POST['email'], $palavraPasse, $_POST['nome'], 1, 1);
+
+$utilizador = new Utilizador($_POST['email'], $palavraPasse, $_POST['nome'], 2, 1);
 $utilizador->save();
 
 $cliente = new Cliente($morada->getId(), $_POST['nif'], $_POST['tlm'], $utilizador->getId());
 $cliente->save();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="2;url=../web/paginasWeb/Pratos.php">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionado</title>
+</head>
+<body style= "text-align: center; color: #120a8f; font-size: 2rem; font-weight: bold; background-color: #F0FFFF">
+    <div style="margin-top: 5%">
+    <p>Feito!</p>
+    <img src="../web/icons/completo.svg" alt="feito!" style= "width: 20%">
+    <p>Está ser redirecionado...</p>
+    </div>
+</body>
+</html>

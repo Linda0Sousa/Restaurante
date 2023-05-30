@@ -10,33 +10,40 @@ include_once "Entidade.php";
 
 class Restaurante extends Entidade{
     protected ?int $id;
-    protected string $nome;
-    protected int $nif;
-    protected string $designacao;
+    protected ?string $nome;
+    protected ?int $nif;
+    protected ?string $designacao;
     protected Carbon $horaAbertura;
     protected Carbon $horaFecho;
-    protected ?int $metodoPagamento = null;
-    protected string $tlm;
-    protected string $telefone;
-    protected string $webpage;
-    protected string $nomeResponsavel;
-    protected string $tlmResponsavel;
+    protected ?string $tlm;
+    protected ?string $tlf;
+    protected ?string $webpage;
+    protected ?string $nomeResponsavel;
+    protected ?string $tlmResponsavel;
     protected ?int $morada_id = null;
-    protected string $email;
-    protected ?int $estado_id = null;
+    protected ?string $email;
+    protected ?int $situacao_id = null;
     protected ?int $utilizador_id = null;
-    protected string $password;
-    protected bool $segunda = false;
-    protected bool $terca = false;
-    protected bool $quarta = false;
-    protected bool $quinta = false;
-    protected bool $sexta = false;
-    protected bool $sabado = false;
-    protected bool $domingo = false;
+    protected ?string $password;
+    protected ?int $segunda;
+    protected ?int $terca;
+    protected ?int $quarta;
+    protected ?int $quinta;
+    protected ?int $sexta;
+    protected ?int $sabado;
+    protected ?int $domingo;
+    protected ?int $MBway;
+    protected ?int $visa;
+    protected ?int $multibanco;
+    protected ?int $numerario;
+    protected ?int $cheque;
 
-    public function __construct(string $nome, int $nif, string $designacao, Carbon $horaAbertura, Carbon $horaFecho, ?int $metodoPagamento, string $tlm,
-    string $telefone, string $webpage, string $nomeResponsavel, string $tlmResponsavel, ?int $morada_id, string $email, ?int $estado_id, ?int $utilizador_id, 
-    string $password, bool $segunda, bool $terca, bool $quarta, bool $quinta, bool $sexta, bool $sabado, bool $domingo)
+    public function __construct(?string $nome = "", ?int $nif = null, ?string $designacao = "", 
+    Carbon $horaAbertura, Carbon $horaFecho, ?string $tlm = null,
+    ?string $telefone = "", ?string $webpage = "", ?string $nomeResponsavel = "", ?string $tlmResponsavel = "", 
+    ?int $morada_id = null, string $email = "", ?int $situacao_id = null, 
+    ?int $utilizador_id = null, string $password = "", int $segunda  = 0, int $terca = 0, int $quarta = 0, int $quinta = 0, int $sexta = 0, 
+    int $sabado = 0, int $domingo = 0, int $MBway = 0, int $visa = 0, $multibanco = 0, $numerario = 0, $cheque = 0)
     {
         parent::__construct($nif, $morada_id, $tlm, 'restaurante', 'id');
 
@@ -44,21 +51,26 @@ class Restaurante extends Entidade{
         $this->designacao = $designacao;
         $this->horaAbertura = $horaAbertura;
         $this->horaFecho = $horaFecho;
-        $this->metodoPagamento = $metodoPagamento;
-        $this->telefone = $telefone;
+        $this->tlf = $telefone;
         $this->email = $email;
         $this->utilizador_id = $utilizador_id;
         $this->password = $password;
         $this->tlmResponsavel = $tlmResponsavel;
         $this->webpage = $webpage;
         $this->nomeResponsavel = $nomeResponsavel;
-        $this->estado_id = $estado_id;
+        $this->situacao_id = $situacao_id;
         $this->segunda = $segunda;
         $this->terca = $terca;
         $this->quarta = $quarta;
         $this->quinta = $quinta;
         $this->sexta = $sexta;
+        $this->sabado = $sabado;
         $this->domingo = $domingo;
+        $this->MBway = $MBway;
+        $this->visa = $visa;
+        $this->multibanco = $multibanco;
+        $this->numerario = $numerario;
+        $this->cheque = $cheque;
     }
 
 
@@ -81,20 +93,28 @@ class Restaurante extends Entidade{
     }
 
     /**
-     * Get the value of estado_id
+     * Get the value of situacao_id
      */
     public function getEstadoId(): ?int
     {
-        return $this->estado_id;
+        return $this->situacao_id;
     }
 
     /**
-     * Set the value of estado_id
+     * Set the value of situacao_id
      */
-    public function setEstadoId(?int $estado_id): self
+    public function setEstadoId(?int $situacao_id): self
     {
-        $this->estado_id = $estado_id;
+        $this->situacao_id = $situacao_id;
 
         return $this;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 }
