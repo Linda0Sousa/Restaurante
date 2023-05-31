@@ -47,7 +47,7 @@ $resultado = $conexao->query($restaurante);
 $id = $resultado->fetch_assoc();
 
 $ementa = new Ementas($_POST['descricao'], $_POST['nome'], $_POST['preco'], 2, $tipo->getId(),
-"web/pratos/img/" . $_FILES['image']['name'], $id['id']);
+"../pratos/img/" . $_FILES['image']['name'], $id['id']);
 
 
 

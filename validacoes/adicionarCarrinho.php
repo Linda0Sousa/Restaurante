@@ -7,7 +7,7 @@ require_once "../classes/MyConnect.php";
 
 session_start();
 
-if($_SESSION['perfil'] != 1 ){
+if($_SESSION['perfil'] != 2 ){
     echo "Tu não podes fazer encomendas";
     header("Location: ../web/paginasWeb/pratos.php");
 }

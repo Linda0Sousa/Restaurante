@@ -124,4 +124,12 @@ class Utilizador extends Model
     {
         return $this->perfil_id;
     }
+
+    /**
+     * Get the value of situacao_id
+     */
+    public function getSituacaoId(): ?int
+    {
+        return $this->situacao_id;
+    }
 }

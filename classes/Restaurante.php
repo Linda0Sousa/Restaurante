@@ -117,4 +117,12 @@ class Restaurante extends Entidade{
     {
         return $this->id;
     }
+
+    /**
+     * Get the value of nome
+     */
+    public function getNome(): ?string
+    {
+        return $this->nome;
+    }
 }

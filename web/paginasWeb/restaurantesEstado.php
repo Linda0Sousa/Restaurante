@@ -12,7 +12,6 @@ $sql = ("select * from restaurante");
 $conexao = MyConnect::getInstance();
 $resultados = $conexao->query($sql);
 
-print_r($resultados);
 ?>
 <body style="background-color: black;">
 
@@ -22,29 +21,35 @@ print_r($resultados);
       <tr>
         <th style="padding: 1rem">Nome Restaurante</th>
         <th style="padding: 1rem">Designação</th>
-        <th style="padding: 1rem">Morada</th>
-        <th style="padding: 1rem">Nif</th>
-        <th style="padding: 1rem">Telemovel</th>
+        <th style="padding: 1rem">Telemovél do responsavél</th>
+        <th style="padding: 1rem">webpage</th>
+        <th style="padding: 1rem">NIF</th>
         <th style="padding: 1rem">Nome Responsavél</th>
-        <th style="padding: 1rem">Telemovel Responsavél</th>
+        <th style="padding: 1rem">Gerir estado</th>
       </tr>
     </thead>
     <tbody>
     <?php 
-    while ($encomendas = $resultados->fetch_assoc()) {
-      if($encomendas['estado_id'] = 4){
-      $cliente = $conexao->query("select * from cliente where id = " . $encomendas['cliente']);
-      $ementas = $conexao->query("select * from ementa where id = " . $encomendas['encomenda_id']);
-      while($nome = $cliente->fetch_assoc()){
+      while($restaurantes = $resultados->fetch_assoc()){
     ?>
     <tr>
-        <td style="padding: 1rem"><?php echo $nome['nome'];} ?></td>
-        <?php while($Ementa = $ementas->fetch_assoc()){?>
-        <td style="padding: 1rem"><?php echo $Ementa['nome']; ?></td>
-        <td style="padding: 1rem"><?php echo $encomendas['montante']; ?></td>
-        <td style="padding: 1rem"><a href="<?php echo "../../mudarEstados/estadocarrinho.php?estado=retirar&id=".$Ementa['id'];}?>">Cancelar</a></td>
-      </tr>
-      <?php } } ?>
+        <td style="padding: 1rem"><?php echo $restaurantes['nome']; ?></td>
+        <td style="padding: 1rem"><?php echo $restaurantes['designacao']; ?></td>
+        <td style="padding: 1rem"><?php echo $restaurantes['tlmResponsavel']; ?></td>
+        <td style="padding: 1rem"><?php echo $restaurantes['webpage']; ?></td>
+        <td style="padding: 1rem"><?php echo $restaurantes['nif']; ?></td>
+        <td style="padding: 1rem"><?php echo $restaurantes['nomeResponsavel']; ?></td>  
+        <?php if($restaurantes['situacao_id'] == 3){  ?>
+        <td style="padding: 1rem"><a href="<?php echo "../../mudarEstados/estadoRestaurante.php?situacao=1&id=".$restaurantes['id'];?>">Confirmar</a></td>
+        <td style="padding: 1rem"><a href="<?php echo "../../mudarEstados/estadoRestaurante.php?situacao=anular&id=".$restaurantes['id'];?>">Anular</a></td>
+        <?php }; ?>
+      <?php if ($restaurantes['situacao_id'] == 2){  ?>
+        <td style="padding: 1rem"><a href="<?php echo "../../mudarEstados/estadoRestaurante.php?situacao=1&id=".$restaurantes['id'];?>">Activar</a></td>
+      <?php }
+      if ($restaurantes['situacao_id'] == 1){  ?>
+        <td style="padding: 1rem"><a href="<?php echo "../../mudarEstados/estadoRestaurante.php?situacao=2&id=".$restaurantes['id'];?>">Bloquear</a></td>
+        <?php } ?>
+    </tr> <?php } ?>
     </tbody>
   </table>
 </div>
@@ -57,4 +62,4 @@ print_r($resultados);
 
 <?php
 
-include_once "../web/includes/footer.php"; ?>
+include_once "../includes/footer.php"; ?>

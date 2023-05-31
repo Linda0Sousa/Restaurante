@@ -17,11 +17,15 @@ if (count($utilizadores) != 1) {
 $utilizador = $utilizadores[0];
 
 if (password_verify($_POST['password'], $utilizador->getPassword())) {
+    if($utilizador->getSituacaoId() != 1){
+        echo "Utilizador não está activo";
+        exit;
+    }
     session_start();
 
     $_SESSION["perfil"] =$utilizador->getPerfilId();
     $_SESSION["utilizador"] = $utilizador->getId();
-
+    $_SESSION["carrinho"] = [];
     ?> 
     <!DOCTYPE html>
     <html lang="en">
