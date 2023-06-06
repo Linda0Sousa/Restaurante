@@ -3,7 +3,7 @@
 session_start();
 //verificar se existe uma sessão iniciada e se é cliente
 
-if($_SESSION['perfil']!=1 || !isset($_SESSION['utilizador']))
+if($_SESSION['perfil']!=2 || !isset($_SESSION['utilizador']))
 {
   header("Location: login.php");
 }
@@ -12,45 +12,45 @@ include "../includes/header.php";
 include "../../classes/MyConnect.php";
 include_once "../../classes/Model.php";
 require_once "../../classes/Clientes.php";
+require_once "../../classes/Ementas.php";
 
-//o codigo sql vai buscar os ids das ementas que o utilizador encomendou
-
-$sql = " select ementa.id from ementa
-inner join encomenda_prato on encomenda_prato.ementa_id = ementa.id
-inner join encomenda on encomenda.id = encomenda_prato.encomenda_id
-where encomenda.cliente_id = " . $_SESSION['utilizador'] . " and encomenda.situacao_id =9;";
 
 $conexao = MyConnect::getInstance();
  ?>
 
-
-
-<body style="background-color: black;">
+<body style="background-color: black; ">
 
           <div class="table-responsive" style="background-color: white; margin: 5% 5%">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm" style="text-align: center;">
               <thead>
                 <tr>
                   <th style="padding: 1rem">Nome</th>
                   <th style="padding: 1rem">Descrição</th>
+                  <th style="padding: 1rem">Quantidade</th>
                   <th style="padding: 1rem">Preço</th>
+                  <th style="padding: 1rem">Informações</th>
+                  <th style="padding: 1rem">Apagar</th>
                   <th style="padding: 1rem">Confirmar</th>
-                  <th style="padding: 1rem">Remover</th>
                 </tr>
               </thead>
               <tbody>
               <?php  
-              $idEmentas = $conexao->query($sql);
-              while ($idEmenta = $idEmentas->fetch_assoc()) {
-                $TotalEmentas = $conexao->query("select * from ementa where ementa.id = " . $idEmenta['id'] . " ;");
-                while ($ementa = $TotalEmentas->fetch_assoc()){
+               $resultados = $_SESSION['carrinho'];
+               foreach ($resultados as $id => $quantidade) {
+                   $ementa = Ementas::find($id)
               ?>
               <tr>
-                  <td style="padding: 1rem"><?php echo $ementa['nome']; ?></td>
-                  <td style="padding: 1rem"><?php echo $ementa['descricao']; ?></td>
-                  <td style="padding: 1rem"><?php echo $ementa['preco']; ?></td>
-                  <td style="padding: 1rem"><a href="<?php echo "../../mudarEstados/estadocarrinho.php?estado=confirmar&id=".$idEmenta['id'];?>">Confirme</a></td>
-                  <td style="padding: 1rem"><a href="<?php echo "../../mudarEstados/estadocarrinho.php?estado=retirar&id=".$idEmenta['id'];}?>">Retire</a></td>
+                  <td style="padding: 1rem"><?php echo $ementa->getNome(); ?></td>
+                  <td style="padding: 1rem"><?php echo $ementa->getDescricao(); ?></td>
+                  <td style ="padding 1rem"><?php echo $quantidade; ?> </td>
+                  <td style="padding: 1rem"><?php echo $quantidade * $ementa->getPreco(); ?>€</td>
+                  <td style="padding: 1rem"> <a href="detalhesPrato.php?id=<?php echo $ementa->getId() ?>" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-info fa-fw"></i></td>
+                                    <td style="padding: 1rem">  <a href="../../validacoes/apagarCarrinho.php?&id=<?php echo $id ?>" class="btn btn-danger btn-sm">
+                                    <i class="fa-solid fa-cart-arrow-down"></i>
+                                </a></td>
+                        
+                  <td style="padding: 1rem"><a href="../../mudarEstados/estadocarrinho.php?quantidade=<?php echo $quantidade; ?>&id=<?php echo $id ?>">Confirmar</a></td>
                 </tr>
                 <?php } ?>
               </tbody>

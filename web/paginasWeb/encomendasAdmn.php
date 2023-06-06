@@ -4,22 +4,15 @@ require_once "../../classes/MyConnect.php";
 require_once "../../classes/Restaurante.php";
 
 $conexao = MyConnect::getInstance();
-//ver as ementas relativas aquele restaurante
+//ver todas as ementas 
 
-session_start();
 
-if ($_SESSION['perfil'] != 3) {
+if ($_SESSION['perfil'] != 1) {
   header("Location: pratos.php");
-  exit;
 }
 
 
-//procura o id do resturante atraves do id do utilizador
-$restaurante_pesquisa = "select * from restaurante where restaurante.utilizador_id = " . $_SESSION['utilizador'];
-$restaurate = $conexao->query($restaurante_pesquisa);
-$restaurate_id = $restaurate->fetch_assoc();
-
-$sql = ("select * from encomenda where restaurante_id =" . $restaurate_id['id']);
+$sql = ("select * from encomenda");
 
 
 

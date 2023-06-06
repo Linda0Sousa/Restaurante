@@ -18,7 +18,7 @@ class Ementas extends Model{
     public function __construct(?string $descricao ="", ?string $nome ="", ?float $preco = null, string $estado ="", string $tipo_id  = null,
     string $imagem ="", ?int $restaurante_id = null)
     {
-        parent::__construct('ementa', 'id', []);
+        parent::__construct('ementa', 'id');
         $this->id = 1;
         $this->descricao = $descricao;
         $this->nome = $nome;
@@ -83,4 +83,5 @@ class Ementas extends Model{
     {
         return $this->estado_id;
     }
+
 }

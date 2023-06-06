@@ -1,12 +1,18 @@
 <?php
 
 require_once "../classes/MyConnect.php";
+require_once "../classes/Utilizador.php";
+
 $conexao = MyConnect::getInstance();
 
+
+//isto vai bloquear/activar restaurantes, no caso do restaurante estar pendente, pode o apagar
 if($_GET['situacao'] == 1 || $_GET['situacao'] == 2){
     $sql= "UPDATE restaurante SET situacao_id = " . $_GET['situacao'] . " WHERE id = " . $_GET['id'] . ";";
+    $conexao->query("update utilizador set situacao_id =" . $_GET['situacao']) . "where id =" . $_GET['utilizador'];
 } else {
     $sql = "delete from restaurante where id= " . $_GET['id'] . " ;";
+    $conexao->query("delete  from utilizador where id=" . $_GET['id'] . ";");
 }
 
 $conexao->query($sql);

@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once "../includes/header.php";
 
 if($_SESSION['perfil'] != 1){
   ?>
@@ -21,6 +20,7 @@ if($_SESSION['perfil'] != 1){
    </html> 
    <?php
 exit;}
+include_once "../includes/header.php";
 ?>
 
 <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css">

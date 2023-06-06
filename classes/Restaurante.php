@@ -13,8 +13,8 @@ class Restaurante extends Entidade{
     protected ?string $nome;
     protected ?int $nif;
     protected ?string $designacao;
-    protected Carbon $horaAbertura;
-    protected Carbon $horaFecho;
+    protected ?string $horaAbertura;
+    protected ?string $horaFecho;
     protected ?string $tlm;
     protected ?string $tlf;
     protected ?string $webpage;
@@ -39,7 +39,7 @@ class Restaurante extends Entidade{
     protected ?int $cheque;
 
     public function __construct(?string $nome = "", ?int $nif = null, ?string $designacao = "", 
-    Carbon $horaAbertura, Carbon $horaFecho, ?string $tlm = null,
+    ?string $horaAbertura = "", ?string $horaFecho = "", ?string $tlm = null,
     ?string $telefone = "", ?string $webpage = "", ?string $nomeResponsavel = "", ?string $tlmResponsavel = "", 
     ?int $morada_id = null, string $email = "", ?int $situacao_id = null, 
     ?int $utilizador_id = null, string $password = "", int $segunda  = 0, int $terca = 0, int $quarta = 0, int $quinta = 0, int $sexta = 0, 
@@ -124,5 +124,13 @@ class Restaurante extends Entidade{
     public function getNome(): ?string
     {
         return $this->nome;
+    }
+
+    /**
+     * Get the value of utilizador_id
+     */
+    public function getUtilizadorId(): ?int
+    {
+        return $this->utilizador_id;
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
 session_start();
+require_once "../classes/Restaurante.php";
 require_once "../classes/Ementas.php";
 require_once "../classes/Tipo.php";
 require_once "../classes/MyConnect.php";
+require_once "../classes/Utilizador.php";
 
 if($_SESSION['perfil'] != 3){
    ?> <!DOCTYPE html>
@@ -25,33 +27,38 @@ if($_SESSION['perfil'] != 3){
     </html> <?php
 }
 
+//id do restaurante
+$restaurante = Restaurante::search([['coluna' => 'utilizador_id', 'operador' => '=', 'valor' => $_SESSION['utilizador']]]);
 
-$tipos = Tipo::search([
+$restaurante_id = $restaurante[0]->getId();
+
+$tipo = Tipo::search([
     ['coluna' => 'tipo', 'operador' => '=', 'valor' => $_POST['tipo']]
 ]);
-
-$tipo = $tipos[0];
 
 
 if (!empty($_FILES) && $_FILES['image']['size'] != 0) {
     
     if (file_exists($_FILES['image']['tmp_name'])) {
         copy($_FILES['image']['tmp_name'], '../web/pratos/img/' . $_FILES['image']['name']);
+
+        try{
+            $ementa = new Ementas($_POST['descricao'], $_POST['nome'], $_POST['preco'], 2, $tipo[0]->getId(),
+            "../pratos/img/" . $_FILES['image']['name'], $restaurante_id);
+            $ementa->save(); 
+            } catch (Error $e){
+                echo "Ocorreu um erro ao criar a ementa";
+                exit;
+            } catch (mysqli_sql_exception $e) {
+                echo "Ocorreu um erro ao criar a ementa";
+                exit;
+            }
+            
     }
+} else {
+    echo "por favor selecione uma imagem";
+    exit;
 }
-
-//sql para encontrar o restaurante
-$restaurante = ("select * from restaurante where utilizador_id = " . $_SESSION['utilizador']);
-$conexao = MyConnect::getInstance();
-$resultado = $conexao->query($restaurante);
-$id = $resultado->fetch_assoc();
-
-$ementa = new Ementas($_POST['descricao'], $_POST['nome'], $_POST['preco'], 2, $tipo->getId(),
-"../pratos/img/" . $_FILES['image']['name'], $id['id']);
-
-
-
-$ementa->save(); 
 
 ?>
 

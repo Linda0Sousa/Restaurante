@@ -31,6 +31,11 @@ if(strlen($_POST['nif']) != 9){
     exit;
 }
 
+if(empty($_POST['rua']) || empty($_POST['codigoPostal'])){
+    echo "codigo Postal ou rua invalida";
+    exit;
+} 
+
 $EncontraNif = Cliente::search([
     ['coluna' => 'nif', 'operador' => '=', 'valor' => $_POST['nif']]
 ]);
@@ -46,15 +51,44 @@ if ((count($EncontraNif) != 0) || (count($EncontraEmail) !=0)) {
 
 $palavraPasse = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-$morada = new Morada($_POST['pais'], $_POST['localidade'], $_POST['codigoPostal'], $_POST['porta'], $_POST['rua']);
-$morada->save();
 
+try {
+    $morada = new Morada($_POST['pais'], $_POST['localidade'], $_POST['codigoPostal'], $_POST['porta'], $_POST['rua']);
+    $morada->save();
+} catch(ERROR $e) {
+    echo "Ocorreu um erro ao validar a sua morada ";
+    exit;
+} catch (mysqli_sql_exception $e){
+    echo "erro ao criar a morada";
+    exit;
+}
 
+try {
 $utilizador = new Utilizador($_POST['email'], $palavraPasse, $_POST['nome'], 2, 1);
-$utilizador->save();
+$utilizador->save(); 
+} catch(ERROR $e) {
+    echo "Ocorreu um erro ao validar a o seu email ";
+    exit;
+} catch (mysqli_sql_exception $e){
+    echo "Ocorreu um erro ao adicionar o cliente provavelmete é o email ";
+    $ligacao->query('delete  from utilizador where utilizador.id = ' . $utilizador->getId());
+    $ligacao->query('delete  from morada where morada.id = ' . $morada->getId());
+    exit;
+}
 
+try{
 $cliente = new Cliente($morada->getId(), $_POST['nif'], $_POST['tlm'], $utilizador->getId());
 $cliente->save();
+} catch(ERROR $e) {
+    echo "Ocorreu um erro ao adicionar o cliente provavelmete é o nif ";
+    $ligacao->query('delete  from utilizador where utilizador.id = ' . $utilizador->getId());
+    exit;
+} catch (mysqli_sql_exception $e){
+    echo "Ocorreu um erro ao adicionar o cliente provavelmete é o nif ";
+    $ligacao->query('delete  from utilizador where utilizador.id = ' . $utilizador->getId());
+    $ligacao->query('delete  from morada where morada.id = ' . $morada->getId());
+    exit;
+}
 ?>
 
 <!DOCTYPE html>

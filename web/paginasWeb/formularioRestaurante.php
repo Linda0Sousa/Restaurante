@@ -2,29 +2,6 @@
 
 include_once "../includes/header.php"; 
 
-session_start();
-
-if(!isset($_SESSION) || $_SESSION['perfil'] != 1 ){
-  ?> <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="refresh" content="2;url=Pratos.php">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Negado</title>
-   </head>
-   <body style= "text-align: center; color: #120a8f; font-size: 2rem; font-weight: bold; background-color: #F0FFFF">
-       <div style="margin-top: 10%">
-       <p>Não</p>
-       <img src="../icons/naos.png" alt="check" style= "width: 25%">
-       <p>Já tinha pensado nisso.</p>
-       </div>
-   </body>
-   </html> 
-   <?php
-exit;}
-
 ?>
 
 <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css">
@@ -51,7 +28,7 @@ exit;}
             </div>
 
             <div class="col-sm-6">
-              <label for="address2" class="form-label" >Numero de telefone Do restaurante</label>
+              <label for="address2" class="form-label">Numero de telefone Do restaurante</label>
               <input type="" class="form-control" id="control" placeholder="" name="tlf">
               <div class="invalid-feedback">
               Este campo é obrigatorio
@@ -59,7 +36,7 @@ exit;}
             </div>
 
             <div class="col-sm-6">
-              <label for="address2" class="form-label" >Numero de telemovel do responsável</label>
+              <label for="address2" class="form-label">Numero de telemovel do responsável</label>
               <input type="" class="form-control" id="control" placeholder="" name="tlmResponsavel">
               <div class="invalid-feedback">
               Este campo é obrigatorio
@@ -177,7 +154,7 @@ exit;}
               </div>
             </div>
 
-            <h6>Dias Take Away (pode alterar mais tarde)</h6>
+            <h6>Dias Take Away</h6>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="segunda" value="monday"> Segunda<br>
               <input class="form-check-input" type="checkbox" name="terca" value="tuesday"> Terça<br>
