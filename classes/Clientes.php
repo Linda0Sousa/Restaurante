@@ -19,4 +19,20 @@ class Cliente extends Entidade{
     }
 
     
+
+    /**
+     * Get the value of morada_id
+     */
+    public function getMoradaId(): ?int
+    {
+        return $this->morada_id;
+    }
+
+    /**
+     * Get the value of utilizador_id
+     */
+    public function getUtilizadorId(): ?int
+    {
+        return $this->utilizador_id;
+    }
 }

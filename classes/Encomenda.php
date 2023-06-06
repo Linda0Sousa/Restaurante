@@ -5,16 +5,16 @@ use Carbon\Carbon;
 
 class Encomenda extends Model
 {
-    protected int $id;
-    protected ?string $dataSubmissao;
-    protected ?float $montante;
+    protected ?int $id = null;
+    protected ?string $dataSubmissao = "";
+    protected ?float $montante = null;
     protected ?int $cliente_id = null;
     protected ?int $restaurante_id = null;
     protected ?int $estado_id = null;
     protected ?int $ementa_id = null;
 
-    public function __construct(?string $dataSubmissao, float $montante = null, ?int $cliente_id = null, ?int $restaurante_id = null,
-    ?int $estado_id = null, ?int $ementa_id)
+    public function __construct(?string $dataSubmissao = "", ?float $montante = null, ?int $cliente_id = null, ?int $restaurante_id = null,
+    ?int $estado_id = null, ?int $ementa_id = null)
     {
       parent::__construct('encomenda', 'id');
       $this->dataSubmissao = $dataSubmissao;
@@ -31,5 +31,13 @@ class Encomenda extends Model
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * Get the value of cliente_id
+     */
+    public function getClienteId(): ?int
+    {
+        return $this->cliente_id;
     }
 }

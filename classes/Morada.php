@@ -2,14 +2,14 @@
 
 require_once "Model.php";
 class Morada extends Model{
-    protected string $pais;
-    protected string $localidade;
-    protected string $codigoPostal;
-    protected string $numPorta;
-    protected string $rua;
+    protected ?string $pais;
+    protected ?string $localidade;
+    protected ?string $codigoPostal;
+    protected ?string $numPorta;
+    protected ?string $rua;
     protected ?int $id;
 
-    public function __construct($pais, $localidade, $codigoPostal, $numPorta, $rua)
+    public function __construct($pais = "", $localidade = "", $codigoPostal = "", $numPorta = "", $rua = "")
     {
         parent::__construct('morada', 'id');
         

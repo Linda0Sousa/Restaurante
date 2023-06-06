@@ -34,7 +34,7 @@ $conexao = MyConnect::getInstance();
 if($_SESSION['perfil'] != 1){
 $restaurante = Restaurante::search([ ['coluna' => 'utilizador_id', 'operador' => '=', 'valor' => $_SESSION['utilizador']]]);
 
-$pratos = $conexao->query("select * from ementa where ementa.restaurante.id = " . $restaurante[0]->getId());
+$pratos = $conexao->query("select * from ementa where ementa.restaurante_id = " . $restaurante[0]->getId());
 } else {
   $pratos = $conexao->query("select * from ementa");
 }
