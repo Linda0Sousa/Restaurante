@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `restaurante` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `restaurante`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: restaurante
@@ -26,9 +24,9 @@ DROP TABLE IF EXISTS `situacao`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `situacao` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(45) NOT NULL,
+  `situacao` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +35,7 @@ CREATE TABLE `situacao` (
 
 LOCK TABLES `situacao` WRITE;
 /*!40000 ALTER TABLE `situacao` DISABLE KEYS */;
-INSERT INTO `situacao` VALUES (1,'ativo'),(2,'bloqueado'),(3,'inativo'),(4,'pendente');
+INSERT INTO `situacao` VALUES (1,'activo'),(2,'bloqueado'),(3,'pendente');
 /*!40000 ALTER TABLE `situacao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-23  9:51:16
+-- Dump completed on 2023-06-07 12:33:50

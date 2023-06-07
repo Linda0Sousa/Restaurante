@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `restaurante` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `restaurante`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: restaurante
@@ -32,7 +30,7 @@ CREATE TABLE `morada` (
   `localidade` varchar(90) NOT NULL,
   `pais` varchar(90) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +39,7 @@ CREATE TABLE `morada` (
 
 LOCK TABLES `morada` WRITE;
 /*!40000 ALTER TABLE `morada` DISABLE KEYS */;
-INSERT INTO `morada` VALUES (1,'a rua',1,'9000-000','localidade teste','Pais'),(2,'a rua',1,'9000-000','localidade teste','Pais'),(3,'a rua',1,'9000-000','localidade teste','Pais'),(4,'a rua',1,'9000-000','localidade teste','Pais'),(5,'Rua De Cima',81,'9708-089','Lagoa','Portugal'),(6,'Rua De Cima',81,'9708-089','Lagoa','Portugal');
+INSERT INTO `morada` VALUES (1,'Rua De Cima',81,'9708-089','Lagoa','Portugal'),(2,'Rua De Cima',81,'9708-089','Lagoa','Portugal'),(3,'Rua De Cima',81,'9708-089','Lagoa','Portugal'),(4,'Olhos de agua',81,'9708-089','Ponta Delgada','Portugal'),(5,'Rua De Cima',81,'1209-124','Ponta Delgada','Portugal'),(6,'Rua De Cima',81,'1209-124','Ponta Delgada','Portugal'),(7,'aaaaaas',89,'9708-089','Lagoa','Portugal');
 /*!40000 ALTER TABLE `morada` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-23  9:51:17
+-- Dump completed on 2023-06-07 12:33:49

@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `restaurante` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `restaurante`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: restaurante
@@ -25,10 +23,10 @@ DROP TABLE IF EXISTS `utilizador`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `utilizador` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(90) NOT NULL,
   `nome` varchar(120) NOT NULL,
-  `password` varchar(1000) NOT NULL,
+  `password` varchar(1500) NOT NULL,
   `perfil_id` int unsigned NOT NULL,
   `situacao_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
@@ -45,7 +43,7 @@ CREATE TABLE `utilizador` (
 
 LOCK TABLES `utilizador` WRITE;
 /*!40000 ALTER TABLE `utilizador` DISABLE KEYS */;
-INSERT INTO `utilizador` VALUES (1,'','o nome','password',1,1),(2,'','o nome','password',1,1),(3,'','o nome','password',1,1),(4,'sousalinda@gmail.com','linda','$2y$10$5JT1KnVHCNw5oYrtqZ8o4Ov.3rs8nPRaY6QZ0hbOk0E7msRvp9pay',1,1),(5,'','nome','password',2,1),(6,'','nome','password',2,1),(7,'email@gmail.com','nome','password',2,1),(8,'sousalinda522@gmail.com','linda','12345678',2,1),(9,'sousalida522@gmail.com','linda','$2y$10$LhtcIhGrEvZ7dOpqxEbqMOsXm0eK5cB/TrYiHudjuMeQ5gtysc1WC',2,1);
+INSERT INTO `utilizador` VALUES (1,'cliente@gmail.com','Linda','$2y$10$vsj5fF15jo11PCejxDGE3el42W37W/gkqkqV7ax45ZhpFdUd8XUIO',2,1),(2,'restaurante@gmail.com','O Salgadinho','$2y$10$xZteMkzitqvG1rM3WkFvouhDO.2NzSVl9oKTjOW5.6cv7hMjM35Mu',3,1),(3,'sousalinda522@gmail.com','linda','$2y$10$YNw3yYVGS7eq42vPzXP1/eqkKSsqXptn9JR0/d7mvoBCnvBpRHgi2',1,1),(4,'restaurante2@gmail.com','linda','$2y$10$45INT0S4kCgTrDk5HXH77u6i1cTtVMOyzgJQCViGdOUjWm/.0XPMC',3,1),(5,'sousalida522@gmail.com','linda','$2y$10$wcjfS6pc2DL2nqDOkB69G.kTWHx.zPdR16Dlw2njJHKjuEhqc0MzK',2,1),(6,'soinda@gmail.com','linda','$2y$10$aQhU6kTy7qa.4qPVUljbAeXKPx5HtUYs9eenS7kAFWmFUkhC0eBaC',2,1),(7,'soina@gmail.com','linda','$2y$10$BiSrYbAcQ0PTFIVgRCQruOjL2RiJJLuCh3SnIFsF1q0xBkHl319mm',2,1),(9,'email@email.com','o escondido ','$2y$10$ukYR2LU1O34oawxMitlbiOd6aXru6x85vEDZEBvUFUSrZDltJQXdq',3,1);
 /*!40000 ALTER TABLE `utilizador` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-23  9:51:16
+-- Dump completed on 2023-06-07 12:33:48
