@@ -11,7 +11,6 @@ require 'C:\xampp\htdocs\restauranteA\vendor\autoload.php';
 //Create an instance; passing `true` enables exceptions
 
 function sendEmail($to, $subject,  $message) {
-    ob_start();
 $mail = new PHPMailer(true);
 
 // try {
