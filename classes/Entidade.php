@@ -62,4 +62,28 @@ abstract class Entidade extends Model{
             return null;
         }
     }
+
+    /**
+     * Get the value of nif
+     */
+    public function getNif(): ?int
+    {
+        return $this->nif;
+    }
+
+    /**
+     * Get the value of tlm
+     */
+    public function getTlm(): ?string
+    {
+        return $this->tlm;
+    }
+
+    /**
+     * Get the value of morada_id
+     */
+    public function getMoradaId(): ?int
+    {
+        return $this->morada_id;
+    }
 }

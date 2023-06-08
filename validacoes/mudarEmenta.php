@@ -1,4 +1,7 @@
-<?php include "../web/includes/header.php"; ?>
+<?php include 
+
+session_start();
+"../web/includes/header.php"; ?>
 
 
 <!--isto vai ser usado para colocar nova informação sobre o prato -->

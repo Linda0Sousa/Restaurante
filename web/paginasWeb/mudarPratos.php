@@ -1,4 +1,12 @@
-<?php require "../includes/header.php";
+<?php 
+
+session_start();
+if ($_SESSION['perfil'] != 3) {
+  header("Location: pratos.php");
+  exit;
+}
+
+require "../includes/header.php";
 
 require_once "../../classes/MyConnect.php";
 
@@ -7,7 +15,6 @@ require_once "../../classes/MyConnect.php";
 $conexao = MyConnect::getInstance();
 
 $ementas = $conexao->query("select * from ementa");
-
 
 
 ?>

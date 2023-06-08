@@ -1,10 +1,11 @@
 <?php
+
+session_start();
 include "../includes/header.php";
 
 //neste site o utilizador tem acesso a todas as suas encomendas, mesmo as que foram apagadas. 
 //O utilizador so pode cancelar os pratos que não forma confirmados pelo restaurante.
 
-session_start();
 
 require_once("../../classes/MyConnect.php");
 require_once("../../classes/Model.php");

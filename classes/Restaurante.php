@@ -133,4 +133,133 @@ class Restaurante extends Entidade{
     {
         return $this->utilizador_id;
     }
+
+    /**
+     * Get the value of tlmResponsavel
+     */
+    public function getTlmResponsavel(): ?string
+    {
+        return $this->tlmResponsavel;
+    }
+
+    /**
+     * Get the value of nomeResponsavel
+     */
+    public function getNomeResponsavel(): ?string
+    {
+        return $this->nomeResponsavel;
+    }
+
+    /**
+     * Get the value of horaAbertura
+     */
+    public function getHoraAbertura(): ?string
+    {
+        return $this->horaAbertura;
+    }
+
+    /**
+     * Get the value of webpage
+     */
+    public function getWebpage(): ?string
+    {
+        return $this->webpage;
+    }
+
+
+    /**
+     * Get the value of segunda
+     */
+    public function getSegunda(): ?int
+    {
+        return $this->segunda;
+    }
+
+    /**
+     * Get the value of terca
+     */
+    public function getTerca(): ?int
+    {
+        return $this->terca;
+    }
+
+    /**
+     * Get the value of quarta
+     */
+    public function getQuarta(): ?int
+    {
+        return $this->quarta;
+    }
+
+    /**
+     * Get the value of quinta
+     */
+    public function getQuinta(): ?int
+    {
+        return $this->quinta;
+    }
+
+    /**
+     * Get the value of sexta
+     */
+    public function getSexta(): ?int
+    {
+        return $this->sexta;
+    }
+
+    /**
+     * Get the value of sabado
+     */
+    public function getSabado(): ?int
+    {
+        return $this->sabado;
+    }
+
+    /**
+     * Get the value of domingo
+     */
+    public function getDomingo(): ?int
+    {
+        return $this->domingo;
+    }
+
+    /**
+     * Get the value of MBway
+     */
+    public function getMBway(): ?int
+    {
+        return $this->MBway;
+    }
+
+    /**
+     * Get the value of visa
+     */
+    public function getVisa(): ?int
+    {
+        return $this->visa;
+    }
+
+    /**
+     * Get the value of multibanco
+     */
+    public function getMultibanco(): ?int
+    {
+        return $this->multibanco;
+    }
+
+    /**
+     * Get the value of designacao
+     */
+    public function getDesignacao(): ?string
+    {
+        return $this->designacao;
+    }
+
+    /**
+     * Get the value of morada_id
+     */
+    public function getMoradaId(): ?int
+    {
+        return $this->morada_id;
+    }
 }

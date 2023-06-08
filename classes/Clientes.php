@@ -35,4 +35,12 @@ class Cliente extends Entidade{
     {
         return $this->utilizador_id;
     }
+
+    /**
+     * Get the value of id
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 }

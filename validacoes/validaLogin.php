@@ -1,6 +1,5 @@
 <?php
 
-
 require_once "../classes/MyConnect.php";
 require_once "../classes/Utilizador.php";
 require_once "../classes/Model.php";
@@ -23,10 +22,12 @@ if (password_verify($_POST['password'], $utilizador->getPassword())) {
     }
     session_start();
 
-    $_SESSION["perfil"] =$utilizador->getPerfilId();
+    $_SESSION["perfil"] = $utilizador->getPerfilId();
     $_SESSION["utilizador"] = $utilizador->getId();
     $_SESSION["carrinho"] = [];
     ?> 
+
+
     <!DOCTYPE html>
     <html lang="en">
     <head>

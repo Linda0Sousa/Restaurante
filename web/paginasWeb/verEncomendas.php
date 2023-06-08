@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include "../includes/header.php";
 require_once "../../classes/MyConnect.php";
 require_once "../../classes/Restaurante.php";

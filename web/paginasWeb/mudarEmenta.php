@@ -1,13 +1,14 @@
-<?php include "../includes/header.php"; 
+<?php 
 
-if ($_SESSION['perfil'] != 1) {
+session_start();
+
+include "../includes/header.php"; 
+
+if ($_SESSION['perfil'] != 3) {
   header("Location: pratos.php");
 }
 
 ?>
-
-
-
 
 <!--isto vai ser usado para colocar nova informação sobre o prato -->
 

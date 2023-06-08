@@ -1,4 +1,8 @@
-<?php include "../includes/header.php"; 
+<?php 
+
+session_start();
+
+include "../includes/header.php"; 
 
 //esta pagina vai listar os clientes, vai buscar as suas moradas e conta de utilizador
 

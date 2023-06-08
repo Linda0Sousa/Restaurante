@@ -1,21 +1,25 @@
-<?php 
+<?php
 
-session_start();
-
-include_once "../includes/header.php"; 
+include_once "../includes/header.php";
+if ($_SESSION['perfil'] != 3) {
+  header("Location: pratos.php");
+  exit;
+}
 
 ?>
+
+<!-- isto vai alterar o perfil do restaurante -->
 
 <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css">
 <script href="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <div class="col-md-6 col-lg-6" style="margin: 5rem auto 10rem; ">
-        <h4 class="mb-3">Registro de restaurante</h4>
-        <form class="needs-validation" novalidate="" method="post" action="../../validacoes/validaRestaurante.php">
+        <h4 class="mb-3">Modificar o restaurante</h4>
+        <form class="needs-validation" novalidate="" method="post" action="../../mudarEstados/mudarRestaurante.php?id=<?php echo $_GET['id']?>">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="nome" placeholder="" value="" required="" name="nome">
+              <input type="text" class="form-control" id="nome" placeholder="" value="" name="nome">
               <div class="invalid-feedback">
                 Este campo é obrigatorio
               </div>
@@ -55,7 +59,7 @@ include_once "../includes/header.php";
 
             <div class="col-sm-9">
               <label for="address1" class="form-label">Rua</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="" name="rua">
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St" name="rua">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>
@@ -71,7 +75,7 @@ include_once "../includes/header.php";
 
             <div class="col-md-5">
               <label for="country" class="form-label">Pais</label>
-              <select class="form-select" id="country" required="" name="pais">
+              <select class="form-select" id="country" name="pais">
                 <option value="">Escolha um pais válido...</option>
                 <option>Portugal</option>
               </select>
@@ -82,7 +86,7 @@ include_once "../includes/header.php";
 
             <div class="col-md-7">
               <label for="state" class="form-label">Localidade do Restaurante:</label>
-              <select class="form-select" id="state" required="" name="localidade">
+              <select class="form-select" id="state" name="localidade">
                 <option value="">Escolha uma localidade valida...</option>
                 <option>Lagoa</option>
                 <option>Ponta Delgada</option>
@@ -94,23 +98,7 @@ include_once "../includes/header.php";
 
             <div class="col-md-3">
               <label for="zip" class="form-label">Codigo Postal</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required="" name="codigoPostal">
-              <div class="invalid-feedback">
-              Este campo é obrigatorio
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com" name="email">
-              <div class="invalid-feedback">
-              Este campo é obrigatorio
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="zip" class="form-label">Password</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required="" name="password">
+              <input type="text" class="form-control" id="zip" placeholder="" name="codigoPostal">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>
@@ -118,7 +106,7 @@ include_once "../includes/header.php";
 
             <div class="col-12">
               <label for="email" class="form-label">Nif</label>
-              <input type="number" class="form-control" id="address" placeholder="" required="" name="nif">
+              <input type="number" class="form-control" id="address" placeholder="" name="nif">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>
@@ -126,7 +114,7 @@ include_once "../includes/header.php";
 
             <div class="col-12">
               <label for="email" class="form-label">webpage</label>
-              <input type="text" class="form-control" id="address" placeholder="" required="" name="webpage">
+              <input type="text" class="form-control" id="address" placeholder="" name="webpage">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>
@@ -134,7 +122,7 @@ include_once "../includes/header.php";
 
             <div class="col-12">
               <label for="email" class="form-label">Nome do Responsavel</label>
-              <input type="text" class="form-control" id="address" placeholder="" required="" name="responsavel">
+              <input type="text" class="form-control" id="address" placeholder="" name="responsavel">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>
@@ -142,7 +130,7 @@ include_once "../includes/header.php";
 
             <div class="col-12">
               <label for="email" class="form-label">Hora de Abertura</label>
-              <input type="text" class="form-control" id="address" placeholder="Coloque no formato de relogio digital" required="" name="Habertura">
+              <input type="text" class="form-control" id="address" placeholder="Coloque no formato de relogio digital" name="Habertura">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>
@@ -150,7 +138,7 @@ include_once "../includes/header.php";
 
             <div class="col-12">
               <label for="email" class="form-label">Hora de fecho</label>
-              <input type="text" class="form-control" id="address" placeholder="Coloque no formato de relogio digital" required="" name="Horafecho">
+              <input type="text" class="form-control" id="address" placeholder="Coloque no formato de relogio digital" name="Horafecho">
               <div class="invalid-feedback">
               Este campo é obrigatorio
               </div>

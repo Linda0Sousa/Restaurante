@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include_once "../includes/header.php";
 
 require_once "../../classes/MyConnect.php";
@@ -70,8 +72,9 @@ $conexao = MyConnect::getInstance();
           if($prato['estado_id'] == 1){?>
           <div class="col">
             <div class="card shadow-sm">
+              <a href="detalhesPrato.php?id=<?php echo $prato['id']?>">
               <img class="bd-placeholder-img card-img-top" width="100%" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"
-              src="<?php echo $prato["imagem"]; ?>" alt="Imagem de um prato" style="object-fit: cover; height: 300px;">
+              src="<?php echo $prato["imagem"]; ?>" alt="Imagem de um prato" style="object-fit: cover; height: 300px;"></a>
               <div class="card-body">
                 <p class="card-text"><?php echo $prato["nome"] . " : " . $prato["descricao"]; ?></p>
                 <div class="d-flex justify-content-between align-items-center">
