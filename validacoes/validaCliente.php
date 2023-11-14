@@ -3,12 +3,14 @@
 
 require_once "../classes/Perfil.php";
 require_once "../classes/Utilizador.php";
+
 require_once "../classes/Estado.php";
 require_once "../classes/Clientes.php";
 require_once "../classes/Morada.php";
 require_once '../classes/MyConnect.php';
 
 $ligacao= MyConnect::getInstance();
+
 $ligacao->query('use restaurante');
 
 if (empty($_POST['nome']) || empty($_POST['password']) || empty($_POST['email'])) {

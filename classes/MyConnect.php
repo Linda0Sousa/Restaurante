@@ -7,7 +7,7 @@ class MyConnect
 
     private function __construct()
     {
-        $this->connection = new mysqli('localhost', 'root', '4769Pro!', "restaurante", 3306);
+        $this->connection = new mysqli('127.0.0.1', 'root', 'LindaOSousa!', "restaurante", 3306);
     }
 
     public static function getInstance()

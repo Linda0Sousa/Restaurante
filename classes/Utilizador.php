@@ -1,6 +1,5 @@
 <?php
 
-
 require_once "MyConnect.php";
 require_once "Model.php";
 class Utilizador extends Model

@@ -8,6 +8,8 @@ $utilizadores = Utilizador::search([
     ['coluna' => 'email', 'operador' => '=', 'valor' => $_POST['email']]
 ]);
 
+print_r($utilizadores);
+
 if (count($utilizadores) != 1) {
     echo "utilizador ou palavra-passe invalida";
     exit;

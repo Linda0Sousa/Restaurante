@@ -70,7 +70,6 @@ abstract class Model
                     . " '" . $filter['valor'] . "'";
             }
         }
-
         $sqlResult = $object->connection->query($sql);
         
         $resultados = [];
